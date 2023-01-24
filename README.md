@@ -1,24 +1,23 @@
-# README
+# Group Management
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version - 3.0.0
+* Rails version - 7.0.4
 
-Things you may want to cover:
+## Configuration
+1. This application uses Postgresql as its Database Management System:
+  * create a postgres role.
+  * update database.yml file with the username and password of the new role created.
+  * run `rails db:create`
 
-* Ruby version
+## Running this project locally
 
-* System dependencies
+From the repo
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+1. `git clone git@github.com:glory-arisah/Group-Management.git`
+2. run `bundle install`
+3. configure the app with postgres as stated under Configuration
+4. run `rails db:migrate`
+5. run `rspec` to confirm all tests passed
+6. run `rails server` to start-up the application
 
 * Deployment instructions
-
-* ...
