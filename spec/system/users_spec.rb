@@ -1,17 +1,15 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Users", type: :system do
-  before do
-    driven_by(:rack_test)
-  end
+  before { driven_by(:rack_test) }
 
-  let!(:user1) { create(:user, email: 'earisah@gmail.com') }
+  let!(:user1) { create(:user, email: "earisah@gmail.com") }
 
   scenario "can view welcome page if unauthenticated" do
     visit "/"
-    expect(page).to have_content('Welcome to GM')
-    expect(page).to have_link('Sign up')
-    expect(page).to have_link('Log in')
+    expect(page).to have_content("Welcome to GM")
+    expect(page).to have_link("Sign up")
+    expect(page).to have_link("Log in")
   end
 
   describe "Sign up:" do
@@ -21,7 +19,7 @@ RSpec.describe "Users", type: :system do
 
         expect(page).to have_content("View your groups")
         expect(page).to have_link("Create group")
-        expect(page).to have_current_path('/')
+        expect(page).to have_current_path("/")
       end
     end
 
@@ -51,15 +49,16 @@ RSpec.describe "Users", type: :system do
 
     context "with invalid credentials" do
       scenario "with empty fields" do
-        log_in_attempt '', ''
-        expect(page).to have_text('Invalid Email or password')
+        log_in_attempt "", ""
+
+        expect(page).to have_text("Invalid Email or password")
       end
 
       scenario "with non-existing credentials" do
-        log_in_attempt 'garisah@gmail.com', 'earisah'
+        log_in_attempt "garisah@gmail.com", "earisah"
+
         expect(page).to have_text("Invalid Email or password")
       end
     end
   end
-
 end

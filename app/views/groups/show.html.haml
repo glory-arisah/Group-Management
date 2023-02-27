@@ -1,0 +1,11 @@
+.nav-wrapper
+  %nav
+    %ul
+      - if user_role(@group, current_user) == 'admin'
+        %li= link_to "Manage Group", "/groups/#{@group.id}/manage"
+      - else
+        %li= link_to "View Members", "/groups/#{@group.id}/view_members"
+
+%h1= @group.name
+%p= @group.description
+

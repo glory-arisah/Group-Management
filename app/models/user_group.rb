@@ -3,5 +3,5 @@ class UserGroup < ApplicationRecord
   belongs_to :user
 
   enum :role, { user: 0, admin: 1 }
-  validates :group_id, :user_id, :role, presence: true
+  validates :group_id, :user_id, presence: true
 end

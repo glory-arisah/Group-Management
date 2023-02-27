@@ -1,0 +1,7 @@
+.wrapper
+  .form
+    %h2 Make a group!
+    = simple_form_for @group, data: { turbo: false } do |f|
+      = f.input :name
+      = f.input :description
+      = f.button :submit, value: "Let's go!"
