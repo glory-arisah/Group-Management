@@ -14,7 +14,7 @@
       %p
         = group_user.username
         - unless user_role(@group, group_user) != 'user'
-          %button= link_to "Remove User", "/groups/#{@group.id}/user_groups/#{@user_group.id}", data: { turbo_method: :delete }
+          %button= link_to "Remove User", "/groups/#{@group.id}/user_groups/#{@user_group.id}", data: { turbo_method: :delete }, class: 'remove-user'
     - else
       - if user_role(@group, group_user) == 'admin'
         %p #{group_user.username} - Admin

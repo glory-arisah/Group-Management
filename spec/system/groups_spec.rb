@@ -39,7 +39,8 @@ RSpec.describe "Groups", type: :system do
     end
 
     scenario "is the admin of his created group" do
-      visit "/groups/#{group1.id}"
+      click_on "#{group1.name}"
+      expect(page).to have_current_path("/groups/#{group1.id}")
 
       expect(ug1.user).to eq(user1)
       expect(ug1.role).to eq("admin")
@@ -48,7 +49,10 @@ RSpec.describe "Groups", type: :system do
 
     describe "update group" do
       scenario "he/she created" do
-        visit "/groups/#{group1.id}/manage"
+        click_on "#{group1.name}"
+        click_on "Manage Group"
+        expect(page).to have_current_path("/groups/#{group1.id}/manage")
+        # visit "/groups/#{group1.id}/manage"
 
         create_update_group
         click_on "Let's go!"
@@ -80,10 +84,15 @@ RSpec.describe "Groups", type: :system do
       end
     end
 
-    scenario "admin can add members to a group" do
+    scenario "admin can add/remove members to a group" do
       visit "/groups/#{group1.id}/manage"
+      # add user to group
+      click_on 'Add User'
+      expect(page).to have_link("Remove User")
 
-      
+      # remove user from group
+      find(".remove-user", match: :first).click
+      expect(page).to have_button("Add User")
     end
 
     def create_update_group
