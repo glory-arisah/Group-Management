@@ -42,8 +42,14 @@ RSpec.describe "Users", type: :system do
     context "with valid credentials" do
       scenario "user can sign in successfully" do
         log_in_attempt user1.email, user1.password
-
         expect(page).to have_text("Signed in successfully")
+      end
+
+      scenario "user can sign out successfully" do
+        log_in_attempt user1.email, user1.password
+        click_on "Sign out"
+
+        expect(page).to have_text("Welcome to GM")
       end
     end
 
@@ -61,4 +67,5 @@ RSpec.describe "Users", type: :system do
       end
     end
   end
+
 end

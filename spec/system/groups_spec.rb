@@ -95,6 +95,15 @@ RSpec.describe "Groups", type: :system do
       expect(page).to have_button("Add User")
     end
 
+    scenario "can only view members if he is not admin" do
+      click_on "#{group2.name}"
+      click_on "View Members"
+
+      expect(page).to have_current_path("/groups/#{group2.id}/view_members")
+      expect(page).to have_text("#{user2.username} - Admin")
+      expect(page).to have_text("#{user1.username}")
+    end
+
     def create_update_group
       fill_in "Name", with: "new group"
       fill_in "Description", with: "new group description"

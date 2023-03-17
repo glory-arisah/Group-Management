@@ -34,6 +34,7 @@ class GroupsController < ApplicationController
   end
 
   def view_members
+    @group_users = @group.users
   end
 
   def update
