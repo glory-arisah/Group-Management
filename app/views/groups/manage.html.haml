@@ -1,0 +1,36 @@
+
+= simple_form_for @group, method: :put do |f|
+  = f.input :name
+  = f.input :description
+  = f.button :submit, value: "Let's go!"
+
+= link_to "Delete Group", "/groups/#{@group.id}", data: { turbo_method: :delete }
+
+%h2 Users in group
+%div
+  - @group_users.each do |group_user|
+    - @user_group = UserGroup.find_by(group: @group, user: group_user)
+    - if user_role(@group, current_user) == "admin"
+      %p
+        = group_user.username
+        - unless user_role(@group, group_user) != 'user'
+          %button= link_to "Remove User", "/groups/#{@group.id}/user_groups/#{@user_group.id}", data: { turbo_method: :delete }, class: 'remove-user'
+    - else
+      - if user_role(@group, group_user) == 'admin'
+        %p #{group_user.username} - Admin
+      - else
+        %p
+          = group_user.username
+
+%h2 Available Users on Platform
+- @other_users.each do |user|
+  %div
+    %p
+      = user.username
+      = simple_form_for [@group, @user_group], url: "/groups/#{@group.id}/user_groups", method: :post  do |f|
+        = f.hidden_field :group_id, value: @group.id
+        = f.hidden_field :user_id, value: user.id
+        = f.hidden_field :role, value: 'user'
+        = f.button :submit, value: 'Add User'
+
+= link_to "Back to Group", "/groups/#{@group.id}"

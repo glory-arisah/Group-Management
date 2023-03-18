@@ -1,0 +1,8 @@
+%h2 Users in #{@group.name}
+%div
+  - @group_users.each do |group_user|
+    - @user_group = UserGroup.find_by(group: @group, user: group_user)
+    - if user_role(@group, group_user) == "admin"
+      %p #{group_user.username} - Admin
+    - else
+      %p #{group_user.username}

@@ -9,4 +9,7 @@
   %main.main
     %h2 Welcome #{current_user.username},
     %h3 View your groups
+    %ul
+      - @groups.each do |group|
+        %li= link_to group.name, "/groups/#{group.id}"
 

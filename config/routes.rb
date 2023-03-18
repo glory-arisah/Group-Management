@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # get "welcome/index"
   devise_for :users
 
   authenticated :user do
@@ -8,5 +7,9 @@ Rails.application.routes.draw do
 
   root "welcome#index", as: :unauthenticated_root
 
-  resources :groups
+  resources :groups do
+    resources :user_groups, only: %i[destroy create]
+  end
+  get "/groups/:id/manage", to: "groups#manage"
+  get "/groups/:id/view_members", to: "groups#view_members"
 end
