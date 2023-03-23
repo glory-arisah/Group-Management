@@ -1,7 +1,6 @@
-.wrapper
-  .form
-    %h2 Make a group!
-    = simple_form_for @group, data: { turbo: false } do |f|
-      = f.input :name
-      = f.input :description
-      = f.button :submit, value: "Let's go!"
+.group__form-wrapper
+  %h2 Make a group!
+  = simple_form_for @group, data: { turbo: false }, html: { class: 'group__form' } do |f|
+    = f.input :name
+    = f.input :description, input_html: { rows: '6' }
+    = f.button :submit, value: "Let's go!", class: 'group__form-btn'

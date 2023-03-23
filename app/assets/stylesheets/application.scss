@@ -1,0 +1,145 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import 'group';
+ @import url('https://fonts.googleapis.com/css2?family=Mukta&family=Poppins:ital,wght@0,400;1,300&family=Raleway:wght@200&display=swap');
+
+ *,
+ *::before,
+ *::after {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+ body {
+   min-height: 100vh;
+   /* background-color: #F5F0F6; */
+ }
+  /* utility classes */
+    .no-list-style {
+      list-style-type: none;
+    }
+
+    .no-underline {
+      text-decoration: none;
+    }
+
+    .italics {
+      font-style: italic;
+    }
+
+  /* end of utility classes */
+
+ .main-nav {
+   display: flex;
+   position: relative;
+   justify-content: space-between;
+   align-items: center;
+   background-color: #EFF1F3 !important;
+   padding: 0.6rem 0;
+
+  .main-nav-list {
+    display: grid;
+    align-items: center;
+    width: 100%;
+    grid-template-columns: 2fr 1fr;
+
+    .logo-list-item {
+      // margin-right: auto;
+      margin-left: 1rem;
+    }
+
+    .logo {
+      display: block;
+      max-width: 45px;
+    }
+  }
+ }
+
+  #nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .nav-link {
+      a {
+        color: #15616d;
+      }
+    }
+
+    .sign-out {
+      border: 1px solid brown;
+      padding: 0.3rem 0.5rem;
+      border-radius: 5px;
+      background-color: #78290f;
+      a {
+        color: #f7ece7;
+      }
+    }
+
+    .sign-in, .sign-up {
+      padding: 0.3rem 0.5rem;
+      border: 1px solid black;
+      border-radius: 5px;
+      a {
+        color: #000;
+      }
+    }
+  }
+
+  /* root page styling */
+  .landing {
+    header {
+      color: #f0f0f0;
+      text-align: center;
+      padding-block: 6rem;
+      border-bottom: 1px solid black;
+      background: linear-gradient(to bottom, #e1e1ff, #626295, #35355d);
+      h1 {
+        font-family: 'Mukta', sans-serif;
+        font-size: 2.7rem;
+      }
+    }
+    section {
+      margin-top: 2rem;
+      p {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .group__list-wrapper {
+    margin-left: 1rem;
+  }
+
+  .group__list {
+    display: grid;
+    margin-top: .5rem;
+    gap: .7rem;
+  }
+  .group__list-item {
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .group__list-item a {
+    color: #ca7f7d;
+  }
+
+  .groups_you_own, .all_groups {
+    margin-top: 1.2rem;
+  }
+
+/* end of root page styling */

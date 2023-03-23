@@ -1,0 +1,45 @@
+%html
+  %head
+    %title GroupMgmt
+    %meta{ name:"viewport", content:"width=device-width,initial-scale=1" }
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+    %link{ rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" }
+
+  %body
+    %nav.main-nav
+      %ul.no-list-style.main-nav-list
+        %li.logo-list-item
+          = link_to '/' do
+            %img{ src: asset_path('logo.png'), alt: 'logo', class: 'logo' }
+        #nav-links
+          - if user_signed_in?
+            %p.nav-link.create-group= link_to 'Create Group', '/groups/new', class: 'no-underline'
+            %p.nav-link.sign-out= link_to 'Sign out', '/users/sign_out', data: { turbo_method: :delete }, class: 'no-underline'
+          - else
+            %p.nav-link.sign-in= link_to 'Sign in', '/users/sign_in', class: 'no-underline'
+            %p.nav-link.sign-up= link_to 'Sign up', '/users/sign_up', class: 'no-underline'
+        -# #burger-icon
+        -#   -# %a{ href: 'javascript:void(0);', class: 'icon' }
+        -#   -# %i.fa.fa-times
+        -#   %i.fa.fa-bars
+    %p.notice= notice
+    %p.alert= alert
+    = yield
+
+    -# :javascript
+    -#   $(document).ready(function() {
+    -#     $('.fa-bars').click(function() {
+    -#       if ($('#nav-links').is(':visible')) {
+    -#         $('#nav-links').css('display', 'none');
+    -#         alert('hi');
+    -#       } else {
+    -#         $('#nav-links').css('display', 'block');
+    -#         alert('hello');
+    -#       }
+    -#     })
+    -#   });
+
+
