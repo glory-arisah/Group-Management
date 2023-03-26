@@ -7,7 +7,7 @@ module AuthHelper
     fill_in "Email", with: email
     fill_in "Password",	with: password
 
-    click_on "Sign up"
+    click_button "Sign up"
   end
 
   def log_in_attempt(email, password)

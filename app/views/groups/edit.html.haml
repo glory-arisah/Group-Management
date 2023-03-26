@@ -1,0 +1,5 @@
+.group__form-wrapper
+  %h2 Edit #{@group.name}!
+  = render partial: 'form', locals: { submit_btn: 'Update your group' }
+
+  %p.back= link_to 'Back', "/groups/#{@group.id}"

@@ -1,8 +1,13 @@
-%h2 Users in #{@group.name}
-%div
-  - @group_users.each do |group_user|
-    - @user_group = UserGroup.find_by(group: @group, user: group_user)
-    - if user_role(@group, group_user) == "admin"
-      %p #{group_user.username} - Admin
-    - else
-      %p #{group_user.username}
+%main.group-main.view-members
+  %header
+    %h2 Users in "#{@group.name}"
+
+  %section
+    - @group_users.each do |group_user|
+      - @user_group = UserGroup.find_by(group: @group, user: group_user)
+      - if user_role(@group, group_user) == "admin"
+        %p #{group_user.username} - Admin
+      - else
+        %p #{group_user.username}
+    %span.leave-group= link_to "Leave Group", "/groups/#{@group.id}/user_groups/#{@user_group.id}", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to leave '#{@group.name}'?" }, class: 'no-underline'
+    %span.back= link_to "Back to group", "/groups/#{@group.id}", class: 'no-underline'

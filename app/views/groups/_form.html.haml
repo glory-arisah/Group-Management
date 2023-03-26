@@ -1,0 +1,4 @@
+= simple_form_for @group, data: { turbo: false }, html: { class: 'group__form' } do |f|
+  = f.input :name
+  = f.input :description, input_html: { rows: '4' }
+  = f.button :submit, value: submit_btn, class: 'group__form-btn'

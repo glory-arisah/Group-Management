@@ -1,11 +1,9 @@
 %main.main.landing
-  - if user_signed_in?
-  - else
-    %header.header
-      %h1 Welcome to GM
-      %span.italics Your favorite group sharing platform....
-    %section
-      %p
-        =link_to 'Log in', "/users/sign_in"
-        %span to Group Management to share groups with users on the platform today...
-        %span.italics It's free!!
+  %header.header
+    %h1 Welcome to GM
+    %span.italics Your favorite group sharing platform....
+  %section
+    %p
+      =link_to 'Log in', "/users/sign_in"
+      %span to Group Management to share groups with users on the platform today...
+      %span.italics It's free!!

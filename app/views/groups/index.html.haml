@@ -1,15 +1,11 @@
--# .wrapper
--#   %nav
--#     %ul
--#       %li GM
--#       %ul
--#         %li= link_to 'Create group', '/groups/new'
--#         %li= link_to 'Sign out', '/users/sign_out', data: { turbo_method: :delete }
-
-%main.main
-  %h2 Welcome #{current_user.username},
-  %h3 View your groups
-  %ul
-    - @groups.each do |group|
-      %li= link_to group.name, "/groups/#{group.id}"
-
+%main.group-main
+  %header.header
+    %h2 Hello #{current_user.username}!
+  %h3.owned_groups Owned groups
+  %ul.no-list-style
+    - @owned_groups.each do |group|
+      %li= link_to group.name, "/groups/#{group.id}", class: 'no-underline'
+  %h3.other_groups Others
+  %ul.no-list-style
+    - @other_groups.each do |group|
+      %li= link_to group.name, "/groups/#{group.id}", class: 'no-underline'

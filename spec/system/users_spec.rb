@@ -17,8 +17,8 @@ RSpec.describe "Users", type: :system do
       scenario "can sign up successfully" do
         sign_up_with "jarisah", "Jay Arisah", "jarisah@gmail.com", "jarisah"
 
-        expect(page).to have_content("View your groups")
-        expect(page).to have_link("Create group")
+        expect(page).to have_content("Owned groups")
+        expect(page).to have_link("Create Group")
         expect(page).to have_current_path("/")
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe "Users", type: :system do
     context "with valid credentials" do
       scenario "user can sign in successfully" do
         log_in_attempt user1.email, user1.password
-        expect(page).to have_text("Signed in successfully")
+        expect(page).to have_text("Hello #{user1.username}!")
       end
 
       scenario "user can sign out successfully" do
@@ -67,5 +67,4 @@ RSpec.describe "Users", type: :system do
       end
     end
   end
-
 end

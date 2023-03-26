@@ -9,7 +9,7 @@ class UserGroupsController < ApplicationController
   def destroy
     @user_group = UserGroup.find_by(id: params[:id])
     @user_group.destroy
-    redirect_to "/groups/#{@group.id}/manage"
+    redirect_to '/'
   end
 
   private

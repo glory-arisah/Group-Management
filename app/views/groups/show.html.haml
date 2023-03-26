@@ -1,11 +1,12 @@
-.nav-wrapper
-  %nav
-    %ul
-      - if user_role(@group, current_user) == 'admin'
-        %li= link_to "Manage Group", "/groups/#{@group.id}/manage"
-      - else
-        %li= link_to "View Members", "/groups/#{@group.id}/view_members"
+%main.group-main
+  %header.header
+    - if user_role(@group, current_user) == 'admin'
+      %p
+        %span= link_to "Manage Group", "/groups/#{@group.id}/manage", class: 'no-underline'
+        %span= link_to 'Edit group', "/groups/#{@group.id}/edit", class: 'no-underline'
+    - else
+      %p= link_to "View Members", "/groups/#{@group.id}/view_members", class: 'no-underline'
 
-%h1= @group.name
-%p= @group.description
+  %h2.group-name= @group.name
+  %p.group-desc= @group.description
 

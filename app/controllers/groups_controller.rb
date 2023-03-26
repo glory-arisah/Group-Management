@@ -1,9 +1,12 @@
 class GroupsController < ApplicationController
+  include GroupsHelper
   before_action :find_group,
-                only: %i[show manage view_members add_user update destroy]
+                only: %i[show manage view_members add_user edit update destroy]
 
   def index
     @groups = current_user.groups.all
+    @owned_groups = @groups.select { |group| user_role(group, current_user) == 'admin' }
+    @other_groups = @groups.reject { |group| @owned_groups.include? group }
   end
 
   def show
@@ -25,6 +28,9 @@ class GroupsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
   end
 
   def manage

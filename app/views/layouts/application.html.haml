@@ -14,32 +14,31 @@
         %li.logo-list-item
           = link_to '/' do
             %img{ src: asset_path('logo.png'), alt: 'logo', class: 'logo' }
-        #nav-links
-          - if user_signed_in?
-            %p.nav-link.create-group= link_to 'Create Group', '/groups/new', class: 'no-underline'
-            %p.nav-link.sign-out= link_to 'Sign out', '/users/sign_out', data: { turbo_method: :delete }, class: 'no-underline'
-          - else
-            %p.nav-link.sign-in= link_to 'Sign in', '/users/sign_in', class: 'no-underline'
-            %p.nav-link.sign-up= link_to 'Sign up', '/users/sign_up', class: 'no-underline'
-        -# #burger-icon
-        -#   -# %a{ href: 'javascript:void(0);', class: 'icon' }
-        -#   -# %i.fa.fa-times
-        -#   %i.fa.fa-bars
+        #burger-icon
+          %i.fa.fa-bars
+    #nav-links
+      - if user_signed_in?
+        = link_to 'Create Group', '/groups/new', class: 'no-underline nav-link create-group'
+        = link_to 'Sign out', '/users/sign_out', data: { turbo_method: :delete }, class: 'no-underline nav-link sign-out'
+      - else
+        %p.sign-in= link_to 'Sign in', '/users/sign_in', class: 'no-underline nav-link'
+        %p.sign-up= link_to 'Sign up', '/users/sign_up', class: 'no-underline nav-link'
     %p.notice= notice
     %p.alert= alert
     = yield
 
-    -# :javascript
-    -#   $(document).ready(function() {
-    -#     $('.fa-bars').click(function() {
-    -#       if ($('#nav-links').is(':visible')) {
-    -#         $('#nav-links').css('display', 'none');
-    -#         alert('hi');
-    -#       } else {
-    -#         $('#nav-links').css('display', 'block');
-    -#         alert('hello');
-    -#       }
-    -#     })
-    -#   });
+    :javascript
+      var burgerIcon = document.querySelector('.fa-bars');
+
+      var showLinks = () => {
+        let navLinks = document.querySelector('#nav-links')
+        if (navLinks.style.display === 'block') {
+          navLinks.style.display = 'none'
+        } else {
+          navLinks.style.display = 'block'
+        }
+      }
+
+      burgerIcon.addEventListener('click', showLinks)
 
 

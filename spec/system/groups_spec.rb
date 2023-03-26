@@ -22,8 +22,8 @@ RSpec.describe "Groups", type: :system do
     before { log_in_attempt user1.email, user1.password }
 
     scenario "can view groups" do
-      expect(page).to have_content("View your groups")
-      expect(page).to have_link("Create group")
+      expect(page).to have_content("Owned groups")
+      expect(page).to have_link("Create Group")
       expect(page).to have_link("group 1")
     end
 

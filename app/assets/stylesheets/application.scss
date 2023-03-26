@@ -49,16 +49,16 @@
    justify-content: space-between;
    align-items: center;
    background-color: #EFF1F3 !important;
-   padding: 0.6rem 0;
+   padding: 0.2rem 0;
 
   .main-nav-list {
-    display: grid;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
-    grid-template-columns: 2fr 1fr;
+    // grid-template-columns: 2fr 1fr;
 
     .logo-list-item {
-      // margin-right: auto;
       margin-left: 1rem;
     }
 
@@ -66,38 +66,39 @@
       display: block;
       max-width: 45px;
     }
+
+    #burger-icon {
+      margin-right: 1rem;
+
+      i {
+        font-size: 1.2rem;
+      }
+    }
   }
  }
 
   #nav-links {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    display: none;
+    background: #202020;
 
     .nav-link {
-      a {
-        color: #15616d;
+      display: block;
+      padding-block: 0.3rem;
+      // padding-left: 0.8rem;
+      margin-inline: 0.8rem;
+      color: #fff !important;
+      border-bottom: 0.5px solid #f0d8d8;
+      &:hover {
+        background-color: #b9b6b6;
+        color: #020202 !important;
       }
     }
 
-    .sign-out {
-      border: 1px solid brown;
-      padding: 0.3rem 0.5rem;
-      border-radius: 5px;
-      background-color: #78290f;
-      a {
-        color: #f7ece7;
-      }
-    }
-
-    .sign-in, .sign-up {
-      padding: 0.3rem 0.5rem;
-      border: 1px solid black;
-      border-radius: 5px;
-      a {
-        color: #000;
-      }
-    }
+    // .sign-in, .sign-up {
+    //   padding: 0.3rem 0.5rem;
+    //   border: 1px solid black;
+    //   border-radius: 5px;
+    // }
   }
 
   /* root page styling */
@@ -105,16 +106,16 @@
     header {
       color: #f0f0f0;
       text-align: center;
-      padding-block: 6rem;
+      padding-block: 2rem;
       border-bottom: 1px solid black;
-      background: linear-gradient(to bottom, #e1e1ff, #626295, #35355d);
+      background: linear-gradient(to bottom, #ccbf8c, #9c6828, #482d0a);
       h1 {
         font-family: 'Mukta', sans-serif;
-        font-size: 2.7rem;
+        font-size: 1.8rem;
       }
     }
     section {
-      margin-top: 2rem;
+      margin: 2rem 0.5rem;
       p {
         font-weight: bold;
       }
@@ -143,3 +144,36 @@
   }
 
 /* end of root page styling */
+
+// breakpoint
+@media screen and (min-width: 45rem) {
+  // navigation
+  #nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .nav-link {
+        a {
+          color: #15616d;
+        }
+      }
+
+      .sign-out {
+        border: 1px solid brown;
+        padding: 0.3rem 0.5rem;
+        border-radius: 5px;
+        background-color: #78290f;
+
+        a {
+          color: #f7ece7;
+        }
+      }
+  }
+
+  .form-wrapper {
+    .simple_form {
+      width: 45%;
+    }
+  }
+}
